@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset='UTF-8'>
+	<title>Cisw 310 - Kastus Kubrak</title>
+	<link rel="stylesheet" type="text/css" href="../css/base.css"/>
+	<link href='http://fonts.googleapis.com/css?family=Lobster&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,900,900italic' rel='stylesheet' type='text/css'>
+	 <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Source+Sans+Pro:900&effect=anaglyph|fire-animation" />
+</head>
+<body>
+
+
+
+	<img src="../css/forange.png" alt="an orange">
+<div class="top">
+
+	
+		<div class="topbar">
+			<h1>Browser Page</h1>
+			<h3 class="font-effect-anaglyph">Let me check your navigaotor and check Bday</h3>
+		</div>
+		
+</div>
+<div class="main">
+	<select name="month" id="month" >
+	<option value='' selected="selected" ></option>
+	<option value="1"  >January</option>
+	<option value="2">February</option>
+	<option value="3">March</option>
+	<option value="4">April</option>
+	<option value="5">May</option>
+	<option value="6">June</option>
+	<option value="7">July</option>
+	<option value="8">August</option>
+	<option value="9">September</option>
+	<option value="10">October</option>
+	<option value="11">November</option>
+	<option value="12">December</option>
+	</select>
+	<select name="day" id="day" onChange="Calculate();">
+	<option value='' selected="selected"></option>
+	<option value="1"  >1</option>
+	<option value="2">2</option>
+	<option value="3">3</option>
+	<option value="4">4</option>
+	<option value="5">5</option>
+	<option value="6">6</option>
+	<option value="7">7</option>
+	<option value="8">8</option>
+	<option value="9">9</option>
+	<option value="10">10</option>
+	<option value="11">11</option>
+	<option value="12">12</option>
+	<option value="13">13</option>
+	<option value="14">14</option>
+	<option value="15">15</option>
+	<option value="16">16</option>
+	<option value="17">17</option>
+	<option value="18">18</option>
+	<option value="19">19</option>
+	<option value="20">20</option>
+	<option value="21">21</option>
+	<option value="22">22</option>
+	<option value="23">23</option>
+	<option value="24">24</option>
+	<option value="25">25</option>
+	<option value="26">26</option>
+	<option value="27">27</option>
+	<option value="28">28</option>
+	<option value="29">29</option>
+	<option value="30">30</option>
+	<option value="31"  >31</option>
+	</select>
+		<div id="smon"></div>
+		<div id="sday"></div>
+		<div id="days"></div>
+	
+	<script language="javascript" type="text/javascript">
+	
+
+
+			function Calculate() {
+				var sm = document.getElementById("month").selectedIndex - 1;
+				var smon = document.getElementById("month").value;
+				var sd = document.getElementById("day").selectedIndex ;
+				var month = new Array ("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
+					
+				days = DaysUntil(sm, sd);
+				document.getElementById("days").innerHTML = days + " days until " + month[sm] + ", " + sd  ;
+			}
+
+
+
+			function DaysUntil(bmonth, bday)
+			{
+				
+
+
+
+				var d = new Date();
+				var year = d.getFullYear();
+				var month = d.getMonth();
+				var day = d.getDate()
+				if(bmonth <= month){
+					if(bday < day)
+					year++;
+				}
+				var bDate = new Date(year, bmonth, bday);
+				var mils = bDate.getTime() - d.getTime();
+				diff = mils / (1000 *  60 * 60 * 24) ;
+				days = Math.floor(mils / (1000 *  60 * 60 * 24));
+				if(days < diff){
+					days ++;
+				}
+				else {days = diff;}
+				
+				return(days);
+
+
+
+			}
+
+			document.write("<h2 id='myColor'>");	
+			for(i=0; i< 10; i++){
+				document.write(DaysUntil(2, 18) + " days until Kastus's birthsday and ");
+				document.write(DaysUntil(0, 1) + " until New Year<br>");
+			}
+			document.write("</h2>");
+	</script>
+	<script language="javascript" type="text/javascript">
+	var myColor = document.getElementById("myColor");
+	var myNav = navigator.userAgent;
+
+		if((verOffset=myNav.indexOf("Opera"))!=-1){
+	
+			myColor.style.color = "#FE04DD";
+		}
+		else if((verOffset=myNav.indexOf("Firefox"))!=-1){
+			myColor.style.color = "#F70928";
+
+		}
+		else if((verOffset=myNav.indexOf("Chrome"))!=-1){
+			myColor.style.color = "#F72E8C";
+		}
+		
+ 			
+		else if(navigator.userAgent.match(/Trident/)){
+			myColor.style.color = "#013CFE";
+			 }
+
+
+	var myNav = navigator.userAgent;
+	document.write("This is " + myNav + "<br>");
+
+
+</script>
+	<span class="opera">Opera </span>
+	<span class="firefox">Firefox </span>
+	<span class="chrome">Chrome </span>
+	<span class="ie">Internet Explorer </span><br>
+
+
+	
+
+
+</div>
+
+	
+
+	
+</body>
+</html>
+

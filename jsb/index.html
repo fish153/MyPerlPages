@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset='UTF-8'>
+	<title>JavaScript Basics - Kastus Kubrak</title>
+
+    
+        
+</head>
+    <body>
+     <script language="Javascript" type="text/javascript" >
+       var chooseBgColor = prompt("Choose a background color for this page");
+        if (chooseBgColor)
+        {
+            document.bgColor = chooseBgColor; 
+           
+                   
+        }
+        else
+        {
+            alert("You refused to answer, so your background color is black");
+            document.bgColor = "Black";
+            
+        }
+            document.write("<form>");
+            document.write("<input type='button' onClick=\"window.location='http://www.yahoo.com'; return false\" value='Yahoo'>");
+            document.write("<input type='button' onClick=\"window.location='http://www.google.com'; return false\" value='Google'>");
+            document.write("<input type='button' onClick=\"window.location='http://www.arc.losrios.edu'; return false\" value='ARC' >");
+            document.write("</form>");
+
+
+    </script>
+        <a href="../index.html" onclick="return confirm('Are you sure you want to live this page?')">Back to home page</a>
+    
+      
+    </body>
+</html>
+

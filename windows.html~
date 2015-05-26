@@ -1,0 +1,19 @@
+<html>
+<head>
+<script>
+
+function newWindow(myPix)
+ {
+var myWindow = window.open(myPix, "catWin", "width=130,height=130,left=100,top=450");
+myWindow.focus();
+}
+
+</script>
+<title>windows</title></head>
+<body>
+<a href="javascript:newWindow('blackcat.png')">Cat Picture</a><br/>
+<a href="javascript:newWindow('bluecat.png')">Blue Cat</a><br/>
+<a href="javascript:newWindow('5.png')">number 5</a><br/>
+<a href="javascript:newWindow('6.png')">number 6</a><br/>
+</body>
+</html>

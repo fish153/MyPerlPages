@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset='UTF-8'>
+	<title>Slide Show - Kastus Kubrak</title>
+	<link rel="stylesheet" type="text/css" href="../css/base.css"/>
+	<link href='http://fonts.googleapis.com/css?family=Lobster&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,900,900italic' rel='stylesheet' type='text/css'>
+	 <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Source+Sans+Pro:900&effect=anaglyph|fire-animation" />
+
+
+	 <script>
+var pic = new Image();
+var w = window.innerWidth;
+var h = window.innerHeight;
+	w = Math.floor( w*0.75-200 );
+	h = Math.floor( h*0.5-200);
+var f = 0;
+function timeShow()
+ {
+	f++;
+	if(f == 19){f=1};	
+	var picSrc = 'i/pic'+ f + '.jpg';
+
+	pic.src = picSrc;
+	
+	document.place.src = pic.src;
+	setTimeout("timeShow()", 3 * 1000);
+	
+
+}
+
+function newWin(){
+	var myPic = document.place.src;
+	var myPicW = document.place.width;
+	var myPicH = document.place.height;
+	if(myPicW>myPicH){
+		myPicW = 620; 
+		myPicH = 515;
+	}
+	else if (myPicW<myPicH){
+		myPicW = 480;
+		myPicH = 640;
+	}	
+		
+	var winPar = "toolbar=0,location=0,scrollbars=0,menubar=0,resizable=0,width=" + myPicW +",height=" + myPicH +",left=" + w +",top="+h;
+	var myWin = window.open(myPic, "myNewWin", winPar);
+	myWin.resizeTo(myPicW,myPicH);
+	myWin.focus();
+}
+	
+
+	</script>
+		
+</head>
+<body onLoad="timeShow()">
+
+
+	<div class="roller">
+		<img src="../css/forange.png" alt="an orange">
+	</div>
+<div class="top">
+
+	
+		<div class="topbar">
+			<h1>There was a beach</h1>
+			<h3 class="font-effect-anaglyph">Slideshow</h3>
+		</div>
+					<div class="navbar">
+				<ul>
+					<li>
+						<a href="../a01/">JS Basics</a>
+					</li>
+					<li>
+						<a href="../a02">Browser</a>
+					</li>
+					<li>
+						<a href="../a03">Slideshow</a>
+					</li>
+					<li>
+						<a href="../a04">Windows</a>
+					</li>
+					<li>
+						<a href="../a05">Forms</a>
+					</li>
+					<li>
+						<a href="../a06">Perl Basics</a>
+					</li>
+					<li>
+						<a href="../a07">Param</a>
+					</li>
+					<li>
+						<a href="../a08">Hidden</a>
+					</li>
+					<li>
+						<a href="../a09">Sort</a>
+					</li>
+					<li>
+						<a href="../a10">Add</a>
+					</li>
+					<li>
+						<a href="../a11">Project</a>
+					</li>
+				</ul>
+			</div>
+		
+</div>
+<div class="main">
+	<div id="pay">
+	</div>
+<div class="photo" >
+	<a href="javascript:newWin()"><img  class="holder" src="i/pic1.jpg" name="place">
+	</a>
+	</div>
+</div>
+
+
+
+	
+
+	
+</body>
+</html>
+

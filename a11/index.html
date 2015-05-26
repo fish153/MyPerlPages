@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset='UTF-8'>
+	<title>Final Exam</title>
+	<link rel="stylesheet" type="text/css" href="../css/base.css"/>
+	<link href='http://fonts.googleapis.com/css?family=Lobster&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,900,900italic' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:900&effect=anaglyph|fire-animation" />
+
+
+	 <script>
+// reg.expr. for first name - only letters;
+wordRE = /^[A-Z]+[a-zA-Z]*$/;
+// reg.exp for a last name - apostrophis or dashes might be in
+wordsRE = /^[a-zA-Z]+[ .'-]*[a-zA-Z]+[a-zA-Z]+[ .'-]*$/;
+// just  digits 
+numRE = /^\d+$/;
+
+function FormValidator()
+ {
+	var isCountry = wordRE.test(exam.country.value); //check country
+	var isOrg = wordsRE.test(exam.org.value); //check organization
+	var isOrigin = wordRE.test(exam.origin.value); //check name of the original texts
+	var isNumber = numRE.test(exam.folios.value); //check number of folios
+	var isPage = numRE.test(exam.page.value); //check number of the folio
+	var cnum = -1;
+	var dnum = -1;
+	// loop to check if any number of year selected
+	for (i = 0; i < exam.year.length; i++) {
+		if(exam.year[i].checked)
+		{
+			cnum = i;
+		}
+	}
+
+	
+	// loop for century
+
+	for(i=0; i<exam.century.length; i++)
+	{
+		if(exam.century[i].checked)
+		{
+			dnum = i;
+		}
+	}
+
+		// validation for the creators
+
+	var authorCheck = false;
+	var authorIndex = exam.author.selectedIndex;
+	if (exam.author.options[authorIndex].value !== "") {
+		authorCheck = true;
+	}
+	
+// if statements expose the  invalid answers
+		if(!isCountry ){
+			
+			document.getElementById("aa").innerHTML  = "Only letters, starting with a capital letter";
+			
+		}
+		else document.getElementById("aa").innerHTML  = "OK";
+		
+		if(!isOrg){
+			document.getElementById("bb").innerHTML = "Please enter a valid name - letters, spaces and apostrophies only";
+			
+		}
+		else document.getElementById("bb").innerHTML = "OK";
+		
+		if(!isNumber){
+			document.getElementById("dd").innerHTML = "A whole number, digits only ";
+			
+		}
+		else document.getElementById("dd").innerHTML = "OK";
+
+		if(!isPage){
+			document.getElementById("ee").innerHTML = "A whole number, digits only ";
+			
+		}
+		else document.getElementById("ee").innerHTML = "OK";
+		
+			
+		if(cnum == -1)
+		{
+			document.getElementById("ff").innerHTML = "Please pick a year";
+		}
+		else document.getElementById("ff").innerHTML = "OK";
+		
+		if(dnum == -1)
+		{
+			document.getElementById("gg").innerHTML = "Please pick a century";
+
+		}
+		else document.getElementById("gg").innerHTML = "OK";
+		
+		if (!authorCheck) {
+			document.getElementById("hh").innerHTML = "Please choose a name of the group";
+			}
+		else document.getElementById("hh").innerHTML = "OK";
+
+
+		// if validation fails - return false
+		if (!isCountry ||!isOrganization){
+		return false;
+		}
+
+	return true;
+}
+
+
+	
+
+	</script>
+		
+</head>
+<body>
+
+
+	<div class="roller">
+		<img src="../css/forange.png" alt="an orange">
+	</div>
+<div class="top">
+
+	
+		<div class="topbar">
+			<h1>It's all about you</h1>
+			<h3 class="font-effect-anaglyph">Fill the form</h3>
+		</div>
+					<div class="navbar">
+				<ul>
+					<li>
+						<a href="../a01/">JS Basics</a>
+					</li>
+					<li>
+						<a href="../a02">Browser</a>
+					</li>
+					<li>
+						<a href="../a03">Slideshow</a>
+					</li>
+					<li>
+						<a href="../a04">Windows</a>
+					</li>
+					<li>
+						<a href="../a05">Forms</a>
+					</li>
+					<li>
+						<a href="../a06">Perl Basics</a>
+					</li>
+					<li>
+						<a href="../a07">Param</a>
+					</li>
+					<li>
+						<a href="../a08">Hidden</a>
+					</li>
+					<li>
+						<a href="../a09">Sort</a>
+					</li>
+					<li>
+						<a href="../a10">Add</a>
+					</li>
+					<li>
+						<a href="../a11">Project</a>
+					</li>
+				</ul>
+			</div>
+		
+</div>
+<div class="main">
+	<div class="box">
+		<p>
+			Please read carefully about The Book of Kells on Wikipedia. Answer the following questions about the book.
+			Check you answers. Click the submit button when you ready.
+		</p>
+	</div>
+
+	<form method="get" action="" name="exam" onsubmit="return FormValidator(this)" >
+		<p class="question">
+			What is the name of the country where The Book of Kells was produced?
+		</p>
+			
+	Name of the coutry: <br>
+	<div class="alert" id="aa">
+	</div>
+	<input type="text" name="country"><br>
+		<p class="question">
+			What is the institution/organization where The Book of Kells is displayed right now?
+			Provide full name.
+		</p>
+		
+	Name of an institution:<br>
+	<div class="alert" id="bb">
+		</div>
+	<input type="text" name="org"><br>
+		<p class="question">
+			As you probably learned The Book of Kells is a copy of some texts. 
+			These texts generally known as:
+			
+		</p>
+		
+	Name of the texts:<br>
+	<div class="alert" id="cc">
+		</div>
+	<input type="text" name="origin"><br>
+		<p class="question">
+			How many folios The Book of Kells contains?
+		</p>
+		
+	Number of all folios:<br>
+	<div class="alert" id="dd">
+		</div>
+	<input type="text" name="folios"><br>
+		<p class="question">
+			One of the monogram "Chi Rho" in The Book of Kells consumes the entire page or folio.
+			What is the number of this folio?
+		</p>
+
+	Number of the folio/page :<br>
+	<div class="alert" id="ee"></div>
+	<input type="text" name="page"><br>
+		<p class="question">
+			When was produced the first facsimilie of The Book of Kells?
+		</p>
+	The year:<br>
+	<div class="alert" id="ff"></div>
+	
+	1960<input type="radio" name="year" value="1960"><br>
+	1915<input type="radio" name="year" value="1915"><br>
+	1952<input type="radio" name="year" value="1952"><br>
+	2001<input type="radio" name="year" value="2001"><br>
+	1867<input type="radio" name="year" value="1867"><br>
+	1951<input type="radio" name="year" value="1951"><br>
+	1979<input type="radio" name="year" value="1979"><br>
+		<p class="question">
+			Many scholars agre what The Book of Kells was probably dated by  ____ century.
+		</p>
+	Century:<br>
+	<div class="alert" id="gg"></div>
+	Early 5th<input type="radio" name="century" value="5"><br>
+	Late 17th<input type="radio" name="century" value="17"><br>
+	Mid 12th<input type="radio" name="century" value="12"><br>
+	Early 9th<input type="radio" name="century" value="9"><br>
+	4th<input type="radio" name="century" value="4"><br>
+	1st<input type="radio" name="century" value="1"><br>
+	2nd<input type="radio" name="century" value="2"><br>
+		<p class="question">
+			There are many dabates about then and where the  manuscript was produced.
+			However, most certainly that The Book of Kells was created by
+		</p>
+	Name of the group of people:<br>
+	<div class="alert" id="hh"></div>
+	<select name="author">
+		<option value="" SELECTED>Pick a group</option>
+		<option value="Navajo trib">Navajo tribe</option>
+		<option value="Scotlands">Pictish Scotlands</option>
+		<option value="Pictish Scotlands">Irish scholars</option>
+		<option value="Columban monks">Columban monks</option>
+	</select>
+	<br>
+	<input type="submit" value="Submit" name="add">
+	</form>
+</div>
+
+
+
+	
+
+	
+</body>
+</html>
+

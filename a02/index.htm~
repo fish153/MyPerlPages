@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset='UTF-8'>
+	<title>Cisw 310 - Kastus Kubrak</title>
+	<link rel="stylesheet" type="text/css" href="../css/base.css"/>
+	<link href='http://fonts.googleapis.com/css?family=Lobster&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,900,900italic' rel='stylesheet' type='text/css'>
+	 <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Source+Sans+Pro:900&effect=anaglyph|fire-animation" />
+</head>
+<body>
+
+<script language="javascript" type="text/javascript">
+
+
+
+</script>
+
+	<img src="../css/forange.png" alt="an orange">
+<div class="top">
+
+	
+		<div class="topbar">
+			<h1>Browser Page</h1>
+			<h3 class="font-effect-anaglyph">Let me check your navigaotor</h3>
+		</div>
+		
+</div>
+<div class="main">
+<h2 id="myColor"> Days until your birthsday</h2>
+<script language="javascript" type="text/javascript">
+	var myColor = document.getElementById("myColor");
+
+
+		if(navigator.appName == "Chrome")
+		{
+			myrColor.style.color = "#F70928";
+
+		}
+		if(navigator.userAgent.match(/Trident/))
+		{
+			myColor.style.color = "#013CFE";
+			 }
+
+	var myNav = navigator.userAgent;
+	document.write("This is " + myNav + ' ' + myColor);
+
+</script>
+</div>
+	
+</body>
+</html>
+

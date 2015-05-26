@@ -1,0 +1,45 @@
+<html><head>
+<script>
+var onePic = new Image();
+var tenPic = new Image();
+var l = parseInt(prompt("enter a number","")); 
+
+var f = 0;
+function rotate()
+ {
+	 
+	if( l>0 ){
+	var one = l % 10;
+	var ten = Math.floor(l/10);
+
+		
+	var oneDig = one + '.png';
+	var tenDig = ten + '.png';
+	onePic.src = oneDig;
+       	tenPic.src = tenDig;	
+	document.ones.src = onePic.src;
+	document.tens.src = tenPic.src;
+	setTimeout("rotate()", 1 * 1000);
+	
+	l--;
+	 
+
+	if(l< 0){document.ones.src = "dig.png"; document.tens.src = "dig.png";}
+	 }
+}
+
+function newLocation() 
+{
+document.location.href=myURL[i];
+}
+</script>
+<title>Image rollovers</title></head>
+<body onLoad="rotate()">
+
+<a href="javascript:newLocation()">
+<img src="dig.png" width="226" height="313" name="tens" border="0"/></a>
+<img src="dig.png" width="226" height="313" name="ones" border="0"/></a>
+
+</body>
+</html>
+

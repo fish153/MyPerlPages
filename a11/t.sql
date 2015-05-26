@@ -1,0 +1,7 @@
+create table cookie(
+	time INT UNSIGNED NOT NULL AUTO_INCREMENT UNIQUE,
+	PRIMARY KEY(time),
+	sid SMALLINT UNSIGNED NOT NULL REFERENCES student(sid)
+);
+
+

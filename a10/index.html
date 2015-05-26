@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset='UTF-8'>
+	<title>Forms - Kastus Kubrak</title>
+	<link rel="stylesheet" type="text/css" href="../css/base.css"/>
+	<link href='http://fonts.googleapis.com/css?family=Lobster&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,900,900italic' rel='stylesheet' type='text/css'>
+	 <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:900&effect=anaglyph|fire-animation" />
+
+
+	 <script>
+// reg.expr. for first name - only letters;
+nameRE = /^[A-Z]+[a-zA-Z]*$/;
+// reg.exp for a last name - apostrophis or dashes might be in
+lnameRE = /^[a-zA-Z]+[.'-]*[a-zA-Z]+$/;
+// integers or floats with no more than 3 digit before and 
+// just 1 digit after decimal point
+milesRE = /^(?:\d{1,3}|\d{1,3}\.\d)$/;
+function FormValidator()
+ {
+	var isFName = nameRE.test(arc.fname.value); //check first name
+	var isLName = lnameRE.test(arc.lname.value); //check last name
+	var isMiles = milesRE.test(arc.miles.value); //check distance
+	var cnum = -1; 
+	// loop to check if any number of cats selected
+	for (i = 0; i < arc.cats.length; i++) {
+		if(arc.cats[i].checked)
+		{
+			cnum = i;
+		}
+	}
+	// loop for dogs
+	var dnum = -1;
+	for(i=0; i<arc.dogs.length; i++)
+	{
+		if(arc.dogs[i].checked)
+		{
+			dnum = i;
+		}
+	}
+
+	// validation for the computer brand
+
+	var brandCheck = false;
+	var brandIndex = arc.brand.selectedIndex;
+	if (arc.brand.options[brandIndex].value !== "") {
+		brandCheck = true;
+	}
+	
+
+// if statements expose the  invalid answers
+		if(!isFName ){
+			
+			document.getElementById("fn").innerHTML  = "Only letters, starting with a capital letter";
+			
+		}
+		else document.getElementById("fn").innerHTML  = "OK";
+		
+		if(!isLName){
+			document.getElementById("ln").innerHTML = "Please enter a valid name - letters, a dash and apostrophie only";
+			
+		}
+		else document.getElementById("ln").innerHTML = "OK";
+		
+		if(!isMiles){
+			document.getElementById("ms").innerHTML = "A whole number from 0 to 999 or a decimal with one digit after the decimal point. ";
+			
+		}
+		else document.getElementById("ms").innerHTML = "OK";
+		
+		if(cnum == -1)
+		{
+			document.getElementById("cs").innerHTML = "Please pick a number";
+		}
+		else document.getElementById("cs").innerHTML = "OK";
+		
+		if(dnum == -1)
+		{
+			document.getElementById("ds").innerHTML = "Please pick a number";
+
+		}
+		else document.getElementById("ds").innerHTML = "OK";
+		
+		if (!brandCheck) {
+			document.getElementById("bd").innerHTML = "Please choose a brand";
+			}
+		else document.getElementById("bd").innerHTML = "OK";
+
+		// if validation fails - return false
+		if (!isFName || !isLName || !isMiles || cnum == -1 || dnum == -1 || !brandCheck){
+		return false;
+		}
+
+	return true;
+}
+
+
+	
+
+	</script>
+		
+</head>
+<body>
+
+
+	<div class="roller">
+		<img src="../css/forange.png" alt="an orange">
+	</div>
+<div class="top">
+
+	
+		<div class="topbar">
+			<h1>It's all about you</h1>
+			<h3 class="font-effect-anaglyph">Fill the form</h3>
+		</div>
+					<div class="navbar">
+				<ul>
+					<li>
+						<a href="../a01/">JS Basics</a>
+					</li>
+					<li>
+						<a href="../a02">Browser</a>
+					</li>
+					<li>
+						<a href="../a03">Slideshow</a>
+					</li>
+					<li>
+						<a href="../a04">Windows</a>
+					</li>
+					<li>
+						<a href="../a05">Forms</a>
+					</li>
+					<li>
+						<a href="../a06">Perl Basics</a>
+					</li>
+					<li>
+						<a href="../a07">Param</a>
+					</li>
+					<li>
+						<a href="../a08">Hidden</a>
+					</li>
+					<li>
+						<a href="../a09">Sort</a>
+					</li>
+					<li>
+						<a href="../a10">Add</a>
+					</li>
+					<li>
+						<a href="../a11">Project</a>
+					</li>
+				</ul>
+			</div>
+		
+</div>
+<div class="main">
+	<form method="get" action="../a09/index.pl" name="arc" onsubmit="return FormValidator(this)" >
+	First name:<br>
+	<div class="alert" id="fn">
+	</div>
+	<input type="text" name="fname"><br>
+	Last name:<br>
+	<div class="alert" id="ln">
+		</div>
+	<input type="text" name="lname"><br>
+	The distantce from your home to ARC in miles:<br>
+	<div class="alert" id="ms"></div>
+	<input type="text" name="miles"><br>
+	How many cats do you have:<br>
+	<div class="alert" id="cs"></div>
+	
+	0<input type="radio" name="cats" value="0"><br>
+	1<input type="radio" name="cats" value="1"><br>
+	2<input type="radio" name="cats" value="2"><br>
+	3<input type="radio" name="cats" value="3"><br>
+	4<input type="radio" name="cats" value="4"><br>
+	5<input type="radio" name="cats" value="5"><br>
+	6<input type="radio" name="cats" value="6"><br>
+	How many dogs do you have:<br>
+	<div class="alert" id="ds"></div>
+	0<input type="radio" name="dogs" value="0"><br>
+	1<input type="radio" name="dogs" value="1"><br>
+	2<input type="radio" name="dogs" value="2"><br>
+	3<input type="radio" name="dogs" value="3"><br>
+	4<input type="radio" name="dogs" value="4"><br>
+	5<input type="radio" name="dogs" value="5"><br>
+	6<input type="radio" name="dogs" value="6"><br>
+	Which brand of computer you own:<br>
+	<div class="alert" id="bd"></div>
+	<select name="brand">
+		<option value="" SELECTED>Pick a brand</option>
+		<option value="Lenovo">Lenovo</option>
+		<option value="HP">HP</option>
+		<option value="Samsung">Samsung</option>
+		<option value="MAC">Mac</option>
+	</select>
+	<br>
+	<input type="submit" value="Submit" name="add">
+	</form>
+</div>
+
+
+
+	
+
+	
+</body>
+</html>
+

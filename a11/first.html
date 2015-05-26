@@ -1,0 +1,100 @@
+
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+<head>
+<title>Enrolling new user</title>
+<link rel="stylesheet" href="../css/base.css" />
+
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lobster&amp;subset=latin,cyrillic" />
+
+<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,900,900italic" rel="stylesheet" />
+
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:900&amp;effect=anaglyph|fire-animation" />
+
+
+<script>
+	var fnameRE = /^[A-Z]+[a-zA-Z]*$/ ;
+	// reg.exp for a last name - apostrophis or dashes might be in
+	var lnameRE = /^[a-zA-Z]+[.'-]*[a-zA-Z]+$/;
+	// check password
+	var secretRE = /^\w{3,}$/ ;
+	
+	function ValidateEnrollForm(){
+		var isFname = fnameRE.test(enrollForm.fname.value);
+		var isLname = lnameRE.test(enrollForm.lname.value);
+		var isSecret1 = secretRE.test(enrollForm.secret1.value);
+		var isSecret2 = secretRE.test(enrollForm.secret2.value);
+
+		var password = false;
+
+		
+			
+		if(!isFname){
+			document.getElementById('fn').innerHTML = "Letters only, starting with capital";
+			
+		}
+		else document.getElementById('fn').innerHTML = "OK";
+		if(!isLname){
+			document.getElementById('ln').innerHTML = "Letters, dash, or apostrophy only";
+		}
+		else document.getElementById('ln').innerHTML = "OK";
+		
+		if(!isSecret1){
+			document.getElementById('secret1').innerHTML = "At least 3 letters, numbers or _";
+		}
+		else document.getElementById('secret1').innerHTML = "OK";
+		
+		if(!isSecret2){
+			document.getElementById('secret2').innerHTML = "At least 3 letters, numbers or _";
+		}
+		else document.getElementById('secret2').innerHTML = "OK";
+		
+		if(enrollForm.secret1.value == enrollForm.secret2.value){
+			password = true;
+			document.getElementById('secret1').innerHTML = "OK"
+			document.getElementById('secret2').innerHTML = "OK";
+		}
+		else {
+			document.getElementById('secret1').innerHTML =  "Passwords doesn't match";
+		}
+			
+		
+		if(!isFname || !isLname || !isSecret1 || !isSecret2 || !password){
+			return false;
+		}
+	}
+</script>
+	
+	
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+</head>
+<body>
+
+
+<div class="main">
+	 <form method="post" action="" enctype="multipart/form-data" onsubmit="return ValidateEnrollForm(this)" name="enrollForm">First Name: <br />
+	<div id="fn" class="alert" >
+		
+	</div>
+	<input type="text" name="fname"  size="20" maxlength="40" placeholder="First Name" /><br />
+	Last Name: <br />
+	<div id="ln" class="alert">
+		
+	</div>
+	<input type="text" name="lname"  size="20" maxlength="40" placeholder="Last Name" /><br />
+	Enter password: <div id="secret1" class="alert">
+		
+	</div>
+	<input type="password" name="secret1"  size="20" maxlenght="50" id="s1"/><br />
+	Repeat password: <br />
+	<div id="secret2" class="alert" >
+
+	</div>
+	<input type="password" name="secret2"  id="s2" size="20" maxlenght="50" /><br />
+	<input type="submit" name="enroll" value="Enroll" /></form>
+</div>
+
+</body>
+</html>
